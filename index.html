@@ -10,13 +10,22 @@
 
 <body>
     <h1>js-biglietto-treno-form</h1>
-    
+
     <form action="">
         <input id="kms-field" type="number" placeholder="numero kms da percorrere">
         <input id="age-field" type="number" placeholder="etá passeggiero">
         <button>acquista biglietto</button>
     </form>
-    
+
+    <div class="recap hidden">
+        <ul>
+            <li>i kms inseriti sono <span id=mykms></span></li>
+            <li>l'eta inserita é <span id=myage></span></li>
+            <li>sconto applicato <span id=mydiscount></span></li>
+            <li>prezzo finale del biglietto é di €<span id="myprice"></span></li>
+        </ul>
+    </div>
+
     <script src="./script/script.js"></script>
 </body>
 

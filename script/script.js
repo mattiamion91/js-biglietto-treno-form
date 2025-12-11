@@ -1,5 +1,8 @@
 //seleziono il form
 
+const recap = document.querySelector(".recap")
+console.log(recap);
+
 const form = document.querySelector('form');
 
 //elaborazione
@@ -7,19 +10,43 @@ const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
     e.preventDefault() //blocco comportamento base del form
 
-    console.log("submit") //check evento submit
+    //console.log("submit") //check evento submit
+
+    //seleziono la card di recap
+
+
+
 
     //seleziono campi input
 
     const kmsField = parseFloat(document.getElementById("kms-field").value); //kms percorsi da utente puo essere un numero con la virgola
     const ageField = parseInt(document.getElementById("age-field").value); //eta utente puo essere solo un numero intero
-    console.log(kmsField);
-    console.log(ageField);
+    //console.log(kmsField);
+    //console.log(ageField);
 
     //invoco la fuzione
 
     ticketPrice(kmsField, ageField)
 
+    //seleziono elementi pagina relativi ai campi
+
+    const mykms = document.getElementById("mykms");
+    const myage = document.getElementById("myage");
+    const myprice = document.getElementById("myprice");
+
+    //elaborazione output
+
+    mykms.innerText = kmsField;
+    myage.innerText = ageField;
+    myprice.innerText = ticketPrice(kmsField, ageField);
+
+    //gestione visibilita card recap
+
+    recap.classList.remove("hidden");
+
+    // form reset
+
+    form.reset();
 })
 
 //funzione
