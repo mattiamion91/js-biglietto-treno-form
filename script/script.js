@@ -1,7 +1,9 @@
-//seleziono il form
+//seleziono la card di recap
 
 const recap = document.querySelector(".recap")
 console.log(recap);
+
+//seleziono il form
 
 const form = document.querySelector('form');
 
@@ -12,11 +14,6 @@ form.addEventListener('submit', (e) => {
 
     //console.log("submit") //check evento submit
 
-    //seleziono la card di recap
-
-
-
-
     //seleziono campi input
 
     const kmsField = parseFloat(document.getElementById("kms-field").value); //kms percorsi da utente puo essere un numero con la virgola
@@ -24,20 +21,24 @@ form.addEventListener('submit', (e) => {
     //console.log(kmsField);
     //console.log(ageField);
 
-    //invoco la fuzione
+    //invoco le fuzione
 
     ticketPrice(kmsField, ageField)
+
+    discountMsg(ageField)
 
     //seleziono elementi pagina relativi ai campi
 
     const mykms = document.getElementById("mykms");
     const myage = document.getElementById("myage");
+    const mydiscount = document.getElementById("mydiscount")
     const myprice = document.getElementById("myprice");
 
     //elaborazione output
 
     mykms.innerText = kmsField;
     myage.innerText = ageField;
+    mydiscount.innerText = discountMsg(ageField)
     myprice.innerText = ticketPrice(kmsField, ageField);
 
     //gestione visibilita card recap
@@ -76,4 +77,21 @@ function ticketPrice(kms, age) {
     console.log(`la informiamo che il costo del suo biglietto é € ${finalPrice}`);
 
     return finalPrice
+}
+
+function discountMsg(age) {
+
+    let message = ''
+
+    if (age < 18) {
+        message = '20% passeggiero minorenne'
+    } else if (age >= 64) {
+        message = '40% passeggiero over65'
+    } else {
+        message = 'nessuno passeggiero standard'
+    }
+
+    console.log(message);
+
+    return message
 }
